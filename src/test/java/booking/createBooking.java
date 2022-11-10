@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 public class createBooking extends BaseTest {
     @Test
     public void TC_001_createBooking(){
-
+        //Positive case
         baseUrl();
         BookingService bs = new BookingService("Jim","Brown",111,true,"2018-01-01","2019-01-01","Breakfast");
         Response resp = given().log().all().when().headers("Content-Type", "application/json")
@@ -59,6 +59,6 @@ public class createBooking extends BaseTest {
         String bodyAsString = body.asString();
         System.out.println(body.asPrettyString());
         Assert.assertEquals(resp.getStatusCode(),200);
-        Assert.assertEquals(bodyAsString.contains("Jim"),true,"Body Does contain firstName");
+        Assert.assertEquals(bodyAsString.contains("Jim"),true,"Body Does contain firstName as String");
     }
 }
